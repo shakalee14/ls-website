@@ -1,4 +1,8 @@
 {
+  "engines": {
+    "node": "4.2.2"
+  },
+
   "name": "ls-website",
   "version": "1.0.0",
   "description": "",
