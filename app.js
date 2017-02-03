@@ -1,10 +1,12 @@
-var app = require('express')();
 var express = require('express')
-var http = require('http').Server(app);
 var db = require('./db')
+var bodyParser = require('body-parser')
+var app = express()
 
 app.set('view engine', 'pug');
 app.use(express.static('public'))
+app.use(bodyParser());
+
 
 app.get('/', function(request, response){
   response.render('index')
@@ -26,26 +28,21 @@ app.get('/contact', function(request, response){
   response.render('contact-us')
 });
 
-app.post('/contact', function(request, response){
-
-  response.send('thank you!')
-});
-
-app.post('/contact', function(request, response, next) {
+app.post('/contact', function(request, response) {
   let name = request.body.name
   let email = request.body.email
   let phone = request.body.phoneNumber
   let message = request.body.message
 
- db.createContact(name, email, phoneNumber, message)
+ db.createContact(name, email, phone, message)
   .then( contact => {
-    response.send('thankyou')
+    response.render('contact-us')
   })
   .catch( error => {
     response.render('error')
   })
 })
 
-http.listen(2222, function(){
+app.listen(2222, function(){
   console.log('listening on *:2222')
 })

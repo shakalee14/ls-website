@@ -2,7 +2,6 @@
   "engines": {
     "node": "4.2.2"
   },
-
   "name": "ls-website",
   "version": "1.0.0",
   "description": "",
@@ -14,6 +13,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "body-parser": "^1.16.0",
     "nodemon": "^1.11.0",
     "pg-promise": "^5.5.6"
   }

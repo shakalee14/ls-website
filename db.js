@@ -16,7 +16,7 @@ const createContact = (name, email, phoneNumber, message) => {
     RETURNING
       *
     `
-  return db.any(sql, [name, email, phoneNumber, message])
+  return database.any(sql, [name, email, phoneNumber, message])
 }
 
 module.exports = { createContact: createContact }
